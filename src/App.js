@@ -5,7 +5,7 @@ import {useState} from "react";
 function App() {
   const [hello, setHello] = useState('Hello world!');
 
-  function handleClick()g {
+  function handleClick() {
     setHello("YOU CLICKED ME!");
   }
 
