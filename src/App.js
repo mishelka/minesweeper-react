@@ -1,7 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState} from "react";
 
 function App() {
+  const [hello, setHello] = useState('Hello world!');
+
+  function handleClick()g {
+    setHello("YOU CLICKED ME!");
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +24,9 @@ function App() {
         >
           Learn React
         </a>
+        {hello}
+
+        <button onClick={handleClick}>Click me!</button>
       </header>
     </div>
   );
