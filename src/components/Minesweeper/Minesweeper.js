@@ -8,6 +8,7 @@ const Minesweeper = () => {
   const [cols, setCols] = useState(4);
   const [mines, setMines] = useState(1);
   const [field, setField] = useState(new Field(rows, cols, mines));
+  const [modalDisplayed, setModalDisplayed] = useState(false);
 
   const updateFieldState = () => {
     const clone = new Field(+rows, +cols, +mines);
@@ -16,13 +17,14 @@ const Minesweeper = () => {
   }
 
   const handleNewGame = (e) => {
-    e.preventDefault();
+    e && e.preventDefault();
     setField(new Field(+rows, +cols, +mines));
   }
 
   const handleOpen = (row, col) => {
     field.openTile(row, col);
     updateFieldState();
+    if(field.state !== GameState.PLAYING) setModalDisplayed(true);
   }
 
   const handleMark = (row, col) => {
@@ -36,7 +38,12 @@ const Minesweeper = () => {
 
   return (
     <div>
-      { field.state !== GameState.PLAYING && <Modal state={field.state}/>}
+      { field.mineCount } {mines}
+      { modalDisplayed &&
+        <Modal state={field.state}
+               onNewGame={() => { handleNewGame(); setModalDisplayed(false); }}
+               onClose={() => setModalDisplayed(false)}/>
+      }
 
       <h2 className="subheader">Minesweeper</h2>
 

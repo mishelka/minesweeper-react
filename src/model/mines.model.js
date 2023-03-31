@@ -124,19 +124,11 @@ export class Field {
   }
 
   isSolved() {
-    return this.rowCount * this.columnCount - this.mineCount === this.getNumberOfOpen();
+    return (this.rowCount * this.columnCount) - this.mineCount === this.getNumberOfOpen();
   }
 
   getNumberOfOpen() {
-    let count = 0;
-    for (let row = 0; row < this.rowCount; row++) {
-      for (let col = 0; col < this.columnCount; col++) {
-        if (this.tiles[row][col].state === TileState.OPEN) {
-          count++;
-        }
-      }
-    }
-    return count;
+    return this.tiles.flat().filter(t => t.state === TileState.OPEN).length;
   }
 
   getScore() {
@@ -153,7 +145,7 @@ export class Field {
     this.startMillis = field.startMillis;
     this.rowCount = field.rowCount;
     this.columnCount = field.columnCount;
-    this.mineCount = field.columnCount;
+    this.mineCount = field.mineCount;
   }
 }
 

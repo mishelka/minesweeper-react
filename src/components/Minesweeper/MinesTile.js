@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Clue, Tile, TileState} from "../../model/mines.model";
+import {Clue, Mine, Tile, TileState} from "../../model/mines.model";
 
 const MinesTile = ({tile, onOpen, onMark}) => {
   const getTileClass = () => {
@@ -24,7 +24,7 @@ const MinesTile = ({tile, onOpen, onMark}) => {
 }
 
 MinesTile.propTypes = {
-  "tile": PropTypes.instanceOf(Tile),
+  "tile": PropTypes.oneOfType([ PropTypes.instanceOf(Clue), PropTypes.instanceOf(Mine)]),
   "onOpen": PropTypes.func,
   "onMark": PropTypes.func
 };
