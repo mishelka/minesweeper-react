@@ -15,7 +15,7 @@ function App() {
       <h2 className="text-lg text-gray-800 mb-8">May the force be with you!</h2>
 
       Please select your game here:
-      <ul>
+      <ul className="list-disc ml-8">
         <li><button className={"button-link"} onClick={() => setSelectedGame("mines")}>Mines</button></li>
         <li><button className={"button-link"} onClick={() => setSelectedGame("tiles")}>Tiles</button></li>
       </ul>
