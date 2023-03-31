@@ -38,7 +38,6 @@ const Minesweeper = () => {
 
   return (
     <div>
-      { field.mineCount } {mines}
       { modalDisplayed &&
         <Modal state={field.state}
                onNewGame={() => { handleNewGame(); setModalDisplayed(false); }}
