@@ -49,14 +49,14 @@ const Minesweeper = () => {
       <form name="newGameForm" className="mb-6">
         <div className="grid grid-cols-4 gap-4">
           <input className="input-field-inline" min="0" max="100"
-                 type="number" name="rows"
                  placeholder="Number of rows"
+                 type="number" name="rows"
                  defaultValue={rows}
                  onChange={handleRowsChange}
           />
           <input className="input-field-inline"
-                 type="number" name="cols"
                  placeholder="Number of columns"
+                 type="number" name="cols"
                  defaultValue={cols}
                  onChange={handleColsChange}
           />

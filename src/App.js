@@ -3,6 +3,7 @@ import {useState} from "react";
 import Scores from "./components/Scores/Scores";
 import Comments from "./components/Comments/Comments";
 import Minesweeper from "./components/Minesweeper/Minesweeper";
+import Kamene from "./components/Kamene/Kamene";
 
 function App() {
   const [selectedGame, setSelectedGame] = useState("mines");
@@ -13,11 +14,14 @@ function App() {
       <h1 className="text-4xl mb-2 text-gray-800">Welcome to GameStudio!</h1>
       <h2 className="text-lg text-gray-800 mb-8">May the force be with you!</h2>
 
-      {selectedGame === 'mines' && <Minesweeper/>}
-      {/*{selectedGame === 'tiles' && <Tiles/>}*/}
+      Please select your game here:
+      <ul>
+        <li><button className={"button-link"} onClick={() => setSelectedGame("mines")}>Mines</button></li>
+        <li><button className={"button-link"} onClick={() => setSelectedGame("tiles")}>Tiles</button></li>
+      </ul>
 
-      {/*<button onClick={() => setSelectedGame("mines")}>Mines</button>*/}
-      {/*<button onClick={() => setSelectedGame("tiles")}>Tiles</button>*/}
+      {selectedGame === 'mines' && <Minesweeper/>}
+      {selectedGame === 'tiles' && <Kamene/>}
 
       <div className="flex flex-row mt-10 w-full">
         <button className={`${displayedService === 0 ? 'button-primary' : 'button-secondary'} button-tab mr-2`}
