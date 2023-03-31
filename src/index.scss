@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header {
+  @apply mb-6 mt-6 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white;
+}
+.subheader {
+  @apply mb-4 mt-10 text-xl font-normal text-gray-500 lg:text-xl dark:text-gray-400;
+}
+
+@layer components {
+  .button-link {
+    @apply align-baseline font-bold text-sm text-blue-500 hover:text-blue-800;
+  }
+  .button-primary {
+    @apply text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 whitespace-nowrap;
+  }
+  .button-secondary {
+    @apply text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600 whitespace-nowrap;
+  }
+  .button-tab {
+    @apply rounded-b-none ring-inset;
+  }
+  .input-field-inline {
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-auto inline-block;
+  }
+  .input-field {
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-full block;
+  }
+  .input-label {
+    @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white;
+  }
+}
+
+.minefield {
+  @apply grid grid-cols-4 gap-0.5 mb-8;
+
+  .tile {
+    @apply w-10 h-10 border border-gray-300 rounded flex justify-center items-center;
+    display: flex;
+
+    &[class^="tile-"] { @apply bg-white; }
+    &.tile-1 { @apply text-blue-500; }
+    &.tile-2 { @apply text-green-500; }
+    &.tile-3 { @apply text-red-500; }
+    &.tile-4 { @apply text-purple-500; }
+    &.tile-5 { @apply text-black; }
+    &.tile-6 { @apply text-gray-800; }
+    &.tile-7 { @apply text-pink-500; }
+    &.tile-8 { @apply text-indigo-500; }
+
+    &.closed, &.marked, &.mine {
+      @apply border-none focus:ring-blue-500;
+    }
+
+    &.closed, &.marked {
+      @apply shadow hover:shadow-xl border-l-2 border-b-2 border-solid;
+    }
+
+    &.marked, &.mine {
+      @apply p-1;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-origin: content-box;
+    }
+
+    &.closed {
+      @apply bg-blue-400 hover:bg-blue-600 border-blue-800 hover:border-blue-900;
+    }
+
+    &.marked {
+      @apply bg-yellow-400 hover:bg-yellow-600 border-yellow-800 hover:border-yellow-900;
+      background-image: url('./assets/images/mines/flag.svg');
+    }
+
+    &.mine {
+      @apply bg-red-500;
+      background-image: url('./assets/images/mines/mine.svg');
+    }
+  }
+}
+
+.default-modal {
+  @apply fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full;
+  background-color: rgba(0, 0, 0, 0.25);
+  transition: opacity 0.3s ease;
+
+  .modal-container {
+    @apply relative w-full h-full max-w-2xl md:h-auto;
+  }
+
+  .modal {
+    @apply relative bg-white rounded-lg shadow dark:bg-gray-700;
+
+    .modal-header {
+      @apply flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600;
+    }
+    .modal-header .header-title {
+      @apply text-xl font-semibold text-gray-900 dark:text-white;
+    }
+    .modal-header .close-button {
+      @apply text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white;
+    }
+
+    .modal-content {
+      @apply p-6 space-y-6;
+    }
+
+    .modal-actions {
+      @apply flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600;
+    }
+  }
+}
+
+table {
+  border-spacing: 0;
+
+  > thead {
+    background-color: #398897;
+    color: white;
+
+    th {
+      border-bottom: 2px solid #10606F;
+      text-align: start;
+      padding: 0.25rem 0.5rem;
+    }
+  }
+
+  > tbody {
+    td {
+      padding: 0.25rem 0.5rem;
+    }
+  }
+
+  /* menej specificke css - nizsia priorita */
+  tr:nth-child(even) {
+    background-color: lightgray;
+  }
+  /* specifickejsie css - vyssia priorita */
+  tbody tr:hover {
+    background-color: #F5A559;
+  }
+}
+
+.warning {
+  background-color: #FFE5AB;
+  color: black;
+  padding: 1rem;
+  margin: 1rem;
+  border: 1px solid darkred;
+}

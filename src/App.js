@@ -1,33 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
 import {useState} from "react";
+import Scores from "./components/Scores/Scores";
+import Comments from "./components/Comments/Comments";
+import Minesweeper from "./components/Minesweeper/Minesweeper";
 
 function App() {
-  const [hello, setHello] = useState('Hello world!');
-
-  function handleClick() {
-    setHello("YOU CLICKED ME!");
-  }
+  const [selectedGame, setSelectedGame] = useState("mines");
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        {hello}
+      <h1 className="text-4xl mb-2 text-gray-800">Welcome to GameStudio!</h1>
+      <h2 className="text-lg text-gray-800 mb-8">May the force be with you!</h2>
 
-        <button onClick={handleClick}>Click me!</button>
-      </header>
+      {selectedGame === 'mines' && <Minesweeper/>}
+      {/*{selectedGame === 'tiles' && <Tiles/>}*/}
+
+      {/*<button onClick={() => setSelectedGame("mines")}>Mines</button>*/}
+      {/*<button onClick={() => setSelectedGame("tiles")}>Tiles</button>*/}
+
+      <Scores game={selectedGame}/>
+      <Comments game={selectedGame}/>
     </div>
   );
 }
